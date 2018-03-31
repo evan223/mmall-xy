@@ -2,13 +2,17 @@
 * @Author: Administrator
 * @Date:   2018-03-29 14:12:44
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-03-29 22:28:20
+* @Last Modified time: 2018-03-31 12:58:05
 */
 
 var path 				= require('path');
 var webpack 			= require('webpack');
 var Ex 					= require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin 	= require('html-webpack-plugin');
+
+//  配置环境变量，dev/online
+var WEBPACK_ENV 		= process.env.WEBPACK_ENV || 'dev'
+
 
 // 获取html-webpack-plugin参数
 var getHtmlConfig = function (name) {
@@ -23,12 +27,13 @@ var getHtmlConfig = function (name) {
 
 var config = {
 	entry: {
-		'common': ['./src/page/commons/index.js'],
+		'common': ['./src/page/commons/index.js', 'webpack-dev-server/client?http://localhost:8088/'],
 		'index': ['./src/page/index/index.js'],
 		'login': ['./src/page/login/index.js']
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
+		publicPath: '/dist',
 		filename: 'js/[name].js'
 	},
 	externals: {
@@ -58,6 +63,10 @@ var config = {
 		new HtmlWebpackPlugin(getHtmlConfig('index')),
 		new HtmlWebpackPlugin(getHtmlConfig('login')),
 	]
+}
+
+if ('dev' === WEBPACK_ENV) {
+	config.entry.common.push('webpack-dev-server/client?http://localhost:8088/')
 }
 
 module.exports = config

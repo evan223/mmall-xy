@@ -2,9 +2,14 @@
 * @Author: Administrator
 * @Date:   2018-03-29 21:02:01
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-03-29 22:20:12
+* @Last Modified time: 2018-03-31 13:04:18
 */
 
 body {
 	background: url('../../image/liyifeng.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	color: red;
+	font-size: 50px;
+	font-weight: bold;
 }

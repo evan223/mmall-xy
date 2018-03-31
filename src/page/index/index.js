@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2018-03-29 14:25:47
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-03-29 21:13:55
+* @Last Modified time: 2018-03-31 12:43:15
 */
 
 // require('../commons/index.js')
@@ -12,5 +12,5 @@ require('./index.css')
 
 var $ = require('jquery')
 
-$('body').html('hello world')
+// $('body').html('hello webpack')
 
